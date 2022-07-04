@@ -1,6 +1,6 @@
 # Poisoner
 
-Simple SKSE mod to add poison to weapons, and get poison from weapons. For Jayserpa's Smart NPC Potions: https://www.nexusmods.com/skyrimspecialedition/mods/40102?tab=posts
+Simple SKSE mod to add poison to weapons, and get poison from weapons. For Jayserpa's Smart NPC Potions: https://www.nexusmods.com/skyrimspecialedition/mods/40102
 
 ## Requirements
 * [CMake](https://cmake.org/)
@@ -34,10 +34,16 @@ cd poisoner
 ```
 ### SSE
 ```
-cmake --preset vs2022-windows-vcpkg
-# build or open po3_Tweaks.sln in Visual Studio
+cmake --preset vs2022-windows-vcpkg-se
 cmake --build build --config Release
 ```
+
+### AE
+```
+cmake --preset vs2022-windows-vcpkg-ae
+cmake --build buildae --config Release
+```
+
 ### VR
 ```
 cmake --preset vs2022-windows-vcpkg-vr
