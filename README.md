@@ -29,7 +29,7 @@ Simple SKSE mod to add poison to weapons, and get poison from weapons. For Jayse
 
 ## Building
 ```
-git clone https://github.com/JonathanTaylor555/Poisoner.git
+git clone https://github.com/Nightfallstorm/Poisoner.git
 cd poisoner
 ```
 ### SSE
