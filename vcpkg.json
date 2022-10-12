@@ -2,7 +2,7 @@
   "name": "poisoner",
   "version-string": "1.0.0",
   "description": "Simple SKSE mod to add/get poison from weapons. For use with Jayserpa's Smart NPC Potions",
-  "homepage": "https://github.com/JonathanTaylor555/Poisoner",
+  "homepage": "https://github.com/Nightfallstorm/Poisoner",
   "license": "MIT",
   "dependencies": [
     "boost-stl-interfaces",
@@ -10,7 +10,8 @@
     "rsm-binary-io",
     "simpleini",
     "spdlog",
-    "xbyak"
+    "xbyak",
+    "commonlibsse-ng"
   ],
   "builtin-baseline": "bd1ef2df46303989eeb048eb7aa9b816aa46365e",
   "overrides": [

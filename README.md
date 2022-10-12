@@ -31,23 +31,8 @@ Simple SKSE mod to add poison to weapons, and get poison from weapons. For Jayse
 ```
 git clone https://github.com/Nightfallstorm/Poisoner.git
 cd poisoner
-```
-### SSE
-```
-cmake --preset vs2022-windows-vcpkg-se
+cmake --preset vs2022-windows-vcpkg
 cmake --build build --config Release
-```
-
-### AE
-```
-cmake --preset vs2022-windows-vcpkg-ae
-cmake --build buildae --config Release
-```
-
-### VR
-```
-cmake --preset vs2022-windows-vcpkg-vr
-cmake --build buildvr --config Release
 ```
 
 ## License

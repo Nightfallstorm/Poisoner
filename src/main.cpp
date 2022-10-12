@@ -1,34 +1,16 @@
 #include "Papyrus.h"
 
-void MessageHandler(SKSE::MessagingInterface::Message* a_message)
-{
-	switch (a_message->type) {
-	case SKSE::MessagingInterface::kPostLoad:
-		{
-			logger::info("{:*^30}", "BEGIN POST LOAD PATCH"sv);
-		}
-	case SKSE::MessagingInterface::kDataLoaded:
-		{
-			logger::info("{:*^30}", "BEGIN DATA LOADED PATCH"sv);
-		}
-		break;
-	default:
-		break;
-	}
-}
-
-#ifdef SKYRIM_AE
 extern "C" DLLEXPORT constinit auto SKSEPlugin_Version = []() {
 	SKSE::PluginVersionData v;
 	v.PluginVersion(Version::MAJOR);
 	v.PluginName(Version::PROJECT);
-	v.AuthorName("powerofthree");
+	v.AuthorName("nightfallstorm");
 	v.UsesAddressLibrary(true);
-	v.CompatibleVersions({ SKSE::RUNTIME_LATEST });
+	v.HasNoStructUse(true);
 
 	return v;
 }();
-#else
+
 extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Query(const SKSE::QueryInterface* a_skse, SKSE::PluginInfo* a_info)
 {
 	a_info->infoVersion = SKSE::PluginInfo::kVersion;
@@ -40,21 +22,9 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Query(const SKSE::QueryInterface* a
 		return false;
 	}
 
-	const auto ver = a_skse->RuntimeVersion();
-	if (ver <
-#	ifdef SKYRIMVR
-		SKSE::RUNTIME_VR_1_4_15
-#	else
-		SKSE::RUNTIME_1_5_39
-#	endif
-	) {
-		logger::critical(FMT_STRING("Unsupported runtime version {}"), ver.string());
-		return false;
-	}
-
 	return true;
 }
-#endif
+
 
 void InitializeLog()
 {
@@ -86,13 +56,13 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
 
 	SKSE::Init(a_skse);
 
-	logger::info("{:*^30}", "BEGIN PRELOAD PATCH"sv);
-
 	auto papyrus = SKSE::GetPapyrusInterface();
 	papyrus->Register(Papyrus::Bind);
 
-	auto messaging = SKSE::GetMessagingInterface();
-	messaging->RegisterListener(MessageHandler);
-
 	return true;
+}
+
+extern "C" DLLEXPORT const char* APIENTRY GetPluginVersion()
+{
+	return Version::NAME.data();
 }
